@@ -17,6 +17,9 @@ defmodule StarWars.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    get "/starship_import", StarshipImportController, :new
+    post "/starship_import", StarshipImportController, :import_starships
   end
 
   # Other scopes may use custom stacks.
