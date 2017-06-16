@@ -15,12 +15,22 @@ config :star_wars, StarWars.Endpoint,
   secret_key_base: "ALMJrIAgZbuszyKyIBhdpV0Xb2LFziDzm+2th8FPGEpB+dz2ySwXH9ZTyrAaPygH",
   render_errors: [view: StarWars.ErrorView, accepts: ~w(html json)],
   pubsub: [name: StarWars.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  instrumenters: [PryIn.Instrumenter]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :pryin,
+  api_key: System.get_env("PRYIN_API_KEY"),
+  otp_app: :star_wars,
+  enabled: false,
+  env: :dev
+
+config :star_wars, StarWars.Repo,
+  loggers: [PryIn.EctoLogger, Ecto.LogEntry]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

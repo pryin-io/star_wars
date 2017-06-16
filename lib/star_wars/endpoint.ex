@@ -38,5 +38,6 @@ defmodule StarWars.Endpoint do
     key: "_star_wars_key",
     signing_salt: "cWoy6ycc"
 
+  plug PryIn.Plug
   plug StarWars.Router
 end

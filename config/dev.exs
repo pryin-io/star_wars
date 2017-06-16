@@ -40,3 +40,7 @@ config :star_wars, StarWars.Repo,
   database: "star_wars_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :pryin,
+  enabled: true,
+  env: :dev

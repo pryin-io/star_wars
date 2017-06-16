@@ -58,4 +58,9 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
+
+config :pryin,
+  enabled: true,
+  env: :prod
+
 import_config "prod.secret.exs"
